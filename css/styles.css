@@ -283,7 +283,6 @@ body{
   flex-direction: column;
 }
 
-
 .filter-options{
   display: flex;
   flex-direction: row;
@@ -299,8 +298,6 @@ body{
   align-items: center;
   max-width: 100%;
 }
-
-
 
 nav {
   display: flex;
@@ -324,8 +321,7 @@ nav {
 #restaurants-list a {
   text-align: center;
   margin: 0 10px 10 px 10px;
-  }
-
+}
 
 #maincontent {
   display: flex;
@@ -415,7 +411,7 @@ td {
  padding: 0;
  border-radius: 20px 0;
  border: none;
-  }
+}
 
 #reviews-list li p:first-of-type{
   background-color: #333;
@@ -423,8 +419,7 @@ td {
  font-size: 2em;
  text-align: left;
  padding: 0 0 0 10px;
-
-  }
+}
 
 #reviews-list li p:nth-of-type(2){
   color:white;
@@ -432,8 +427,7 @@ td {
   top: 3%;
   right: 1%;
   font-size: 1.5em;
-
-  }
+}
 
 #reviews-list li p:nth-of-type(3){
   color:white;
@@ -441,14 +435,12 @@ td {
   width: 15%;
   font-size: 1.5em;
   text-align: center;
-
-  }
+}
 
 #reviews-list li p:nth-of-type(4){
   padding: 0 15px;
   font-size: 1em;
-
-  }
+}
 
 /* ====================== Accessibility ====================== */
 
@@ -465,5 +457,3 @@ td {
 .skip-link:focus {
   top: 0;
 }
-
-

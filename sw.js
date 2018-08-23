@@ -1,6 +1,5 @@
 
-
-
+//Install cache and add all the files to it
 self.addEventListener('install', (event) => {
   var urlsToCache = [
     '/',
@@ -22,14 +21,14 @@ self.addEventListener('install', (event) => {
 	'img/9.jpg',
 	'img/10.jpg'
   ];
-
   event.waitUntil(
-    caches.open('mws-static-v1').then((cache) => {
-           return cache.addAll(urlsToCache);
-   })
-);
+  	caches.open('mws-static-v1').then((cache) => {
+  		return cache.addAll(urlsToCache);
+  	})
+  	);
 });
 
+//fetch the files from the cache
 self.addEventListener('fetch', function(event) {
   event.respondWith(
   	caches.match(event.request).then( (response) =>{
