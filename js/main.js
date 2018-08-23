@@ -4,10 +4,25 @@ let restaurants,
 var newMap
 var markers = []
 
+
+
 /**
+ * Register the ServiceWorker, when the DOM is loaded. 
+ * (making sure that users have the best first-visit experience )
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', (event) => {
+
+  if(navigator.serviceWorker){
+    navigator.serviceWorker.register('/sw.js').then((registration) => {
+    console.log('Service worker registration succeeded:', registration);
+  }).catch((error) => {
+    console.log('Service worker registration failed:', error);
+  });
+  }else{
+    console.log('Service workers are not supported.');
+  }
+
   initMap(); // added 
   fetchNeighborhoods();
   fetchCuisines();
@@ -78,7 +93,7 @@ initMap = () => {
         scrollWheelZoom: false
       });
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-    mapboxToken: '<your MAPBOX API KEY HERE>',
+    mapboxToken: 'pk.eyJ1IjoiYnJpZ2lob3J2YXRoODIiLCJhIjoiY2psMHh1ZXNjMTl6NjNscXAxZGUzZjJvcyJ9.OueRj6WnXxfEWGh5VXon-w',
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
       '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -161,6 +176,8 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  let attribute = `${restaurant.name} restaurant. They serve ${restaurant.cuisine_type} food`;
+  image.setAttribute('alt', attribute);
   li.append(image);
 
   const name = document.createElement('h1');

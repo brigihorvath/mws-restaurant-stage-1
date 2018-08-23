@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <!-- Normalize.css for better cross-browser consistency -->
@@ -7,6 +7,9 @@
   <!-- Main CSS file -->
   <link rel="stylesheet" href="css/styles.css" type="text/css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
   <title>Restaurant Info</title>
 </head>
 
@@ -14,12 +17,13 @@
   <!-- Beginning header -->
   <header>
     <!-- Beginning nav -->
+    <a href="#restaurant-container" class="skip-link">Skip to main content</a>
     <nav>
       <h1><a href="/">Restaurant Reviews</a></h1>
     </nav>
     <!-- Beginning breadcrumb -->
     <ul id="breadcrumb" >
-      <li><a href="/">Home</a></li>
+      <li><a href="/" aria-label="Link to the homepage">Home</a></li>
     </ul>
     <!-- End breadcrumb -->
     <!-- End nav -->
@@ -29,12 +33,14 @@
   <!-- Beginning main -->
   <main id="maincontent">
     <!-- Beginning map -->
-    <section id="map-container">
+    <section id="map-container" role="application" title="Map for the restaurant" aria-label="Map with the location of the choosen restaurant">
       <div id="map"></div>
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
-    <section id="restaurant-container">
+    <!-- With the skip link we can jump here, in order to improve the user experience
+    The tabindex is set to -1, because the older browsers may not move the focus, when pressing on the anchor tag -->
+    <section id="restaurant-container" tabindex="-1">
       <h1 id="restaurant-name"></h1>
       <img id="restaurant-img">
       <p id="restaurant-cuisine"></p>
